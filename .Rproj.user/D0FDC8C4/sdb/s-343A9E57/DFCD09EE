@@ -1,0 +1,17 @@
+{
+    "contents" : "## # # # # # # ###\n##       wrangle##\n## pale_blue_dot##\n## # # # # # # ###\n\nlibrary(tuneR)\nlibrary(seewave)\nlibrary(magrittr)\n\n\n## load sound file\npbd <- readMP3(\"The Pale Blue Dot - Cosmos- A Space Time Odyssey.mp3\")\n\ntimer(pbd)\n\n## slice to 60 seconds\ncut <- cutw(pbd, from = 4, to = 64, output = \"Wave\") %>%\n    fadew(din = 1, dout = 3, shape = \"exp\", output = \"Wave\")\n\n# reverse\ntuc <- revw(cut, output =\"Wave\")\n\n## export shortened file\nwriteWave(cut, \"cut.mp3\")\n\n\n## ph function\n## load all mp3 files\n## files <- sapply(dir, paste(\"\\\\.wav$\", readMP3)\n## for (i in files)\n    ## find file name\n    ## find start and end\n    ## create vector of time from start to end minus 60 seconds\n    ## get random sample from vector, assign as x\n    ## add 60 to x; assign to y\n    ## cut file from = x, to = y, output = \"Wave\"\n    ## writeWave(i, paste(filename.mp3\"))\n\n## create 1 hour list\n## load all mp3 files\n## files <- sapply(dir, paste(\"\\\\.wav$\", readMP3)\n## bind files into object\n## writeWave(object, \"object.mp3\")\n\nlisten(pbd)\nlisten(cut)\nlisten(tuc)\n",
+    "created" : 1425318208606.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "230607519",
+    "id" : "DFCD09EE",
+    "lastKnownWriteTime" : 1425407843,
+    "path" : "~/GitHub/sounds/wrangle_pale_blue_dot.R",
+    "project_path" : "wrangle_pale_blue_dot.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
