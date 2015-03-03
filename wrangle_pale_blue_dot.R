@@ -11,7 +11,6 @@ library(magrittr)
 ## load sound file
 pbd <- readMP3("The Pale Blue Dot - Cosmos- A Space Time Odyssey.mp3")
 
-timer(pbd)
 
 ## slice to 60 seconds
 cut <- cutw(pbd, from = 4, to = 64, output = "Wave") %>%
