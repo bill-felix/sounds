@@ -7,7 +7,21 @@ library(tuneR)
 library(seewave)
 library(magrittr)
 
-
+## load all .mp3 files in wd
+files <- list.files(pattern = "*.mp3", full.names =T)
+names <- list("1.mp3", "2.mp3", "3.mp3", "4.mp3")
+set.seed(2)
+for (i in length(files)) {
+    name <- files[i]
+    dat <- readMP3(files[i])
+    length <- round(length(dat@left) / dat@samp.rate, 2)
+    length <- length - 60
+    start <- sample(0:length, 1, replace =T)
+    end <- start + 60
+    cut <- cutw(dat, from = start, to = end, output = "Wave") %>%
+        fadew(din = 1, dout = 3, shape = "exp", output = "Wave")
+    writeWave(cut, names[i])
+}
 ## load sound file
 pbd <- readMP3("The Pale Blue Dot - Cosmos- A Space Time Odyssey.mp3")
 
