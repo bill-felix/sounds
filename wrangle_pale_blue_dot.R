@@ -16,11 +16,11 @@ for (i in length(files)) {
     dat <- readMP3(files[i])
     length <- round(length(dat@left) / dat@samp.rate, 2)
     length <- length - 60
-    start <- sample(0:length, 1, replace =T)
+    start <- as.numeric(sample(0:length, 1, replace =T))
     end <- start + 60
     cut <- cutw(dat, from = start, to = end, output = "Wave") %>%
         fadew(din = 1, dout = 3, shape = "exp", output = "Wave")
-    writeWave(cut, names[i])
+    writeWave(cut, filename = "1.mp3", extensible =F)
 }
 ## load sound file
 pbd <- readMP3("The Pale Blue Dot - Cosmos- A Space Time Odyssey.mp3")
